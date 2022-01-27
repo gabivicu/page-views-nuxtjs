@@ -1,36 +1,21 @@
 <template>
-<div class="home-page">
-  <section class="intro">
-    <h1>Get the latest tech news!</h1>
-  </section>
-  <section class="featured-posts">
-    <PostPreview
-      id="1"
-      thumbnail= "https://mlmuuous6dwe.i.optimole.com/DfwWcdQ-JK5kWYU6/w:auto/h:auto/q:auto/https://technation.io/wp-content/uploads/2017/11/91F5041A-B5D4-4648-AA55-C39A0DBBAAC3.jpeg"
-      title= "Hello there !"
-      previewText="This is my first post" />
-    <PostPreview
-      id="2"
-      thumbnail= "https://mlmuuous6dwe.i.optimole.com/DfwWcdQ-JK5kWYU6/w:auto/h:auto/q:auto/https://technation.io/wp-content/uploads/2017/11/91F5041A-B5D4-4648-AA55-C39A0DBBAAC3.jpeg"
-      title= "Hello there - the second time !"
-      previewText="This is my second post" />
-    <PostPreview
-      id="3"
-      thumbnail= "https://mlmuuous6dwe.i.optimole.com/DfwWcdQ-JK5kWYU6/w:auto/h:auto/q:auto/https://technation.io/wp-content/uploads/2017/11/91F5041A-B5D4-4648-AA55-C39A0DBBAAC3.jpeg"
-      title= "Hi !"
-      previewText="This is my third post" />
-  </section>
-</div>
+  <div class="home-page">
+    <section class="intro">
+      <h1>Get the latest tech news!</h1>
+    </section>
+    <PostList :posts="loadedPosts" />
+  </div>
 </template>
 
 <script>
-import PostPreview from '@/components/Posts/PostPreview'
 
 export default {
-  components: {
-    PostPreview
+  computed: {
+    loadedPosts() {
+      return this.$store.getters.loadedPosts
+    }
   }
-}
+};
 </script>
 
 

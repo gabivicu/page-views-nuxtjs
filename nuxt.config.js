@@ -7,11 +7,11 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    title: 'WD BLOG',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: 'My cool Web Dev Blog' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -28,19 +28,26 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    '~assets/styles/main.css'
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~plugins/core-components.js',
+    '~plugins/date-filter.js'
   ],
 
   /*
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
   ],
+  axios: {
+    baseURL: process.env.baseUrl || 'https://blog-nuxtjs-1344e-default-rtdb.europe-west1.firebasedatabase.app'
+  }
 
   /*
   ** Build configuration
@@ -52,5 +59,14 @@ module.exports = {
     extend(config, ctx) {
 
     }
+  },
+
+  env: {
+    baseUrl: process.env.baseUrl || 'https://blog-nuxtjs-1344e-default-rtdb.europe-west1.firebasedatabase.app'
+  },
+  transition: {
+    name: 'fade',
+    mode: 'out-in'
   }
+
 }
